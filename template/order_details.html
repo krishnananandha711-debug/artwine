@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Your Orders - Romyk</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        #d1{
+        background-color:#000000;
+        height:85px;
+        padding-top:19px;
+        padding-left:60px;
+        display:flex;
+        }
+        #d9{
+        color:white;
+        }
+    </style>
+</head>
+<body>
+<div id="d1" class="container-fluid  text-white ">
+    <ul style="display:flex; list-style:none;">
+        <li><h2 id="d9">VIEW ORDERS</h2></li>
+        <li style="margin-left:1000px;"><a style="color:#fff;font-size:30px;" href="user_page"><i class="fas fa-arrow-left"></i></a></li>
+    </ul>
+
+</div>
+<div class="container mt-5">
+    <form method="get" class="mb-4 row">
+        <div class="col-md-3">
+            <input type="text" name="q" class="form-control" placeholder="Search by Order ID" value="{{ request.GET.q }}">
+        </div>
+        <div class="col-md-3">
+            <select name="status" class="form-control">
+                <option value="">All Status</option>
+                <option value="on the way" {% if request.GET.status == 'on the way' %}selected{% endif %}>On the Way</option>
+                <option value="delivered" {% if request.GET.status == 'delivered' %}selected{% endif %}>Delivered</option>
+                <option value="cancelled" {% if request.GET.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+                <option value="returned" {% if request.GET.status == 'returned' %}selected{% endif %}>Returned</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <select name="date_filter" class="form-control">
+                <option value="">All Time</option>
+                <option value="30" {% if request.GET.date_filter == '30' %}selected{% endif %}>Last 30 Days</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary btn-block">Filter</button>
+        </div>
+    </form>
+
+
+    <h2 class="mb-4 text-center">Your Orders</h2>
+
+    {% if orders %}
+        {% for order in orders %}
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <strong>Order ID:</strong> {{ order.id }} |
+                    <!--<strong>Date:</strong> {{ order.date|date:"d M Y H:i" }} |-->
+                    <strong>Total:</strong> ₹{{ order.total_amount }}
+                </div>
+                <div class="card-body">
+                    <p><strong>Address:</strong> {{ order.address }}</p>
+                    <h5>Items:</h5>
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Product</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order.items.all %}
+                            <tr>
+                                <td>
+                                     {% if item.art_product %}
+                                            {{ item.art_product.title }}
+                                     {% elif item.craft_product %}
+                                            {{ item.craft_product.title }}
+                                     {% else %}
+                                             Unknown Product
+                                     {% endif %}
+                                </td>
+                                <td>{{ item.quantity }}</td>
+                                <td>₹{{ item.price }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-info text-center">
+            You have not placed any orders yet.
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>

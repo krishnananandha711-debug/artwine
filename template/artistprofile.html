@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <style>
+        #d1{
+        background-color:#000000;
+        height:85px;
+        padding-top:19px;
+        padding-left:60px;
+        display:flex;
+        }
+                  .card{
+      transition: transform 0.3s ease,box-shadow 0.3s ease;
+      }
+      .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0,15);
+      }
+      .card img {
+      object-fit:cover;
+      height: 180px;
+      }
+       #b2{
+        margin-top: 8px;
+    border: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 55px;
+    background-color: black;
+    color: white;
+    border-radius: 45px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: none;
+}
+    </style>
+
+</head>
+<body>
+
+<div id="d1" class="container-fluid text-white ">
+    <ul style="display:flex; list-style:none;">
+        <li><h2>PROFILE</h2></li>
+        <li style="margin-left:1000px;"><a style="color:#fff;font-size:30px;" href="artist_page"><i class="fas fa-arrow-left"></i></a></li>
+    </ul>
+
+</div>
+
+<!--<div class="container">-->
+
+<!--  <div class="card" style="width:400px">-->
+<!--    <center><img class="card-img-top" src="{{data.image.url}}"  alt="Card image" style="width:50%"></center>-->
+<!--   <center> <div class="card-body">-->
+<!--      <h2 class="card-title">NAME:{{data.name}}</h2>-->
+<!--      <h4 class="card-title">NUMBER:{{data.phn_no}}</h4>-->
+<!--       <h4 class="card-title">ADDRESS:{{data.address}}</h4>-->
+<!--       <h4 class="card-title">USERNAME:{{data.username}}</h4>-->
+<!--       <h4 class="card-title">PASSWORD:{{data.password}}</h4>-->
+<!--     </center>-->
+
+<!--      <center><a href="update_artdata/{{data.id}}" class="btn btn-primary">update</a></center>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--</div>-->
+ <center><div class="container my-4">
+    <h2 class="text-center mb-4">  MY PROFILE</h2>
+   <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 p-2">
+
+
+  <div class="card shadow-lg border-0" style="width:400px; flex:0 0 auto; border-radius:15px;">
+      <center><img class="card-img-top rounded-top" src="{{data.image.url}}"   alt="Card image" style="width:50%"></center>
+   <div class="card-body text-center">
+      <h2 class="card-title text-success fw-bold">NAME:{{data.name}}</h2>
+      <h4 class="text-muted mb-3">NUMBER:{{data.phn_no}}</h4>
+       <h4 class="text-muted mb-1"><i class="bi bi-telephone"></i>ADDRESS:{{data.address}}</h4>
+       <h4 class="text-muted mb-3">USERNAME:{{data.username}}</h4>
+       <h4 class="text-muted mb-3">PASSWORD:{{data.password}}</h4>
+        <center><img class="card-img-bottom rounded-top" src="{{data.id_proof.url}}"   alt="Card image" style="width:50%"></center>
+       <center><button id="b2"><a href="update_artdata/{{data.id}}"> update</a></button></center>
+
+
+   </div>
+  </div>
+
+
+</div>
+</div></center>
+
+
+
+
+</body>
+</html>

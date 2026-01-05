@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <style>
+        #d1{
+        background-color:#000000;
+        height:85px;
+        padding-top:19px;
+        padding-left:60px;
+        display:flex;
+        }
+       #b4{
+        margin-top: 8px;
+    border: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 55px;
+    background-color: blue;
+    color: white;
+    border-radius: 45px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: none;
+}
+      #d5{
+      padding-top:100px;
+       background-image:url("/static/images/chat.jpg");
+       background-size:cover;
+       background-position:center;
+       background-repeat:no-repeat;
+       height:100vh;
+       margin:0;
+      }
+      #t4{
+      border-color:black;
+      padding:10px;
+      border-radius:8px;
+      font-size:18px;
+      }
+  </style>
+</head>
+<body>
+<div id="d1" class="container-fluid text-white ">
+    <ul style="display:flex; list-style:none;">
+        <li><h2>SEND FEEDBACK</h2></li>
+        <li style="margin-left:1000px;"><a style="color:#fff;font-size:30px;" href="user_page"><i class="fas fa-arrow-left"></i></a></li>
+    </ul>
+
+</div>
+<div id="d5">
+ <center><form method="POST">
+    {% csrf_token %}
+    <textarea name="message" id="t4" placeholder="enter your feedback" rows="6" cols="60" required></textarea><br><br>
+    <button id="b4" type="submit">send</button>
+ </form></center>
+</div>
+
+</body>
+</html>

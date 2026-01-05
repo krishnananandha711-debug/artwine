@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <style>
+        #d1{
+        background-color:#000000;
+        height:85px;
+        padding-top:19px;
+        padding-left:60px;
+        display:flex;
+        }
+      .card{
+      transition: transform 0.3s ease,box-shadow 0.3s ease;
+      }
+      .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0,15);
+      }
+      .card img {
+      object-fit:cover;
+      height: 180px;
+      }
+       #b3 {
+              margin-top: 8px;
+              border: none;
+              text-transform: uppercase;
+              display: inline-block;
+              padding: 10px 55px;
+              background-color: black;
+              color: white;
+              border-radius: 45px;
+              -webkit-transition: all 0.3s;
+              transition: all 0.3s;
+              border: none;
+          }
+          .styled-input {
+              width: 30%;
+              padding: 10px 15px;
+              border: 1px solid #ccc;
+              border-radius: 8px;
+              font-size: 16px;
+              outline: none;
+              transition: 0.3s;
+          }
+    </style>
+
+</head>
+<body>
+
+<div id="d1" class="container-fluid text-white ">
+    <ul style="display:flex; list-style:none;">
+        <li><h2>VIEW CRAFTWORKERS</h2></li>
+        <li style="margin-left:1000px;"><a style="color:#fff;font-size:30px;" href="user_page"><i class="fas fa-arrow-left"></i></a></li>
+    </ul>
+
+</div>
+<div class="container">
+    <form action="user_search_craftworker" method="post">
+        {% csrf_token %}
+    <input type="text" name="n1" id="i" class="styled-input" placeholder="search user">
+    <button id="b3" type="submit">search</button>
+    </form>
+</div>
+
+
+<div class="container my-4">
+    <h2 class="text-center mb-4">CRAFT WORKERS PROFILES</h2>
+    <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 p-2">
+ {% for i in data %}
+
+  <div class="card shadow-lg border-0" style="width:400px; flex:0 0 auto; border-radius:15px;">
+      <center><img class="card-img-top rounded-top" src="{{i.image.url}}"   alt="Card image" style="width:50%"></center>
+   <div class="card-body text-center">
+      <h2 class="card-title text-success fw-bold">NAME:{{i.name}}</h2>
+      <h4 class="text-muted mb-3">NUMBER:{{i.phn_no}}</h4>
+       <h4 class="text-muted mb-1"><i class="bi bi-telephone"></i>ADDRESS:{{i.address}}</h4>
+       <center><img class="card-img-bottom rounded-top" src="{{i.id_proof.url}}"   alt="Card image" style="width:50%"></center>
+
+
+      <a href="{% url 'userview_craftproduct' i.name %}" class="btn btn-outline-success btn-sm">view works</a>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <style>
+      #d1{
+        background-color:#000000;
+        height:85px;
+        padding-top:19px;
+        padding-left:60px;
+        display:flex;
+        }
+      .update-box{
+          width:500px;
+          background: #ffffff;
+          padding:30px;
+          margin:30px auto;
+          border-radius: 15px;
+          box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+      }
+      .profile-img{
+          width:120px;
+          height:120px;
+          border-radius:50%;
+          object-fit:cover;
+          display:block;
+          margin:10px auto 20px;
+          border:4px solid #2e86de;
+      }
+       #b2{
+        margin-top: 8px;
+    border: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 55px;
+    background-color: black;
+    color: white;
+    border-radius: 45px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: none;
+}
+       form label{
+           font-weight:bold;
+       }
+
+      </style>
+</head>
+<body>
+<div id="d1" class="container-fluid text-white ">
+    <ul style="display:flex; list-style:none;">
+        <li><h2>UPDATE PROFILE</h2></li>
+        <li style="margin-left:1000px;"><a style="color:#fff;font-size:30px;" href="{% url 'user_profile' %}"><i class="fas fa-arrow-left"></i></a></li>
+    </ul>
+
+</div><br><br>
+<div class="update-box">
+       {% if d.image %}
+    <img src="{{d.image.url}}" class="profile-img">
+    {% endif %}
+
+<form action="../update_userprofile/{{d.pk}}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+
+   <center><input type="submit" value="update" id="b2"></center>
+</form>
+<br><br><br>
+</div>
+</body>
+</html>

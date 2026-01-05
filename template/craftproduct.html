@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <style>
+        #d1{
+        background-color:#000000;
+        height:85px;
+        padding-top:19px;
+        padding-left:60px;
+        display:flex;
+        }
+       h2{
+        font-size: 2.5rem 40px;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    color:#fff;
+    }
+        #d2{
+        margin-top:135px;
+        width:400px;
+        height:680px;
+        box-shadow:0 0 10px rgba(0,0,0,0.4);
+        border-radius:8px;
+        }
+        h1
+        {
+        position: relative;
+    margin-bottom: 0;
+    padding-top:20px;
+
+    font-size: 2.5rem 40px;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+}
+        .form-control{
+         width: 80%;
+    border: none;
+    height: 28px;
+    margin-bottom: 8px;
+    padding-left: 25px;
+    border: 1px solid #999;
+    outline: none;
+    color: #000000;
+    border-radius: 45px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+        #btn{
+        margin-top: 8px;
+    border: none;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 55px;
+    background-color: #ffbe33;
+    color: #ffffff;
+    border-radius: 45px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border: none;
+}
+
+
+
+    </style>
+
+</head>
+<body>
+<div id="d1" class="container-fluid">
+    <ul style="display:flex; list-style:none;">
+        <li><h2>CRAFT PRODUCT</h2></li>
+        <li style="margin-left:1000px;"><a style="color:#fff;font-size:30px;" href="craftworker_page"><i class="fas fa-arrow-left"></i></a></li>
+    </ul>
+
+    </div>
+<center><div id="d2">
+    <form action="craftproduct_create" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    <h1>ADD PRODUCT</h1><br>
+          <input type="text" class="form-control" name="cr1" placeholder="title" required><br>
+          <input type="text" class="form-control" name="cr2" placeholder="description" required><br>
+          <input type="text" class="form-control" name="cr3" placeholder="category" required><br>
+    <input type="text" class="form-control" name="cr4" placeholder="artistname" required><br>
+    <input type="date" class="form-control" name="cr5" placeholder="created_date" required><br>
+           <input type="number" class="form-control" name="cr6" placeholder="size" required><br>
+    <input type="number" class="form-control" name="cr7" placeholder="price" required><br>
+        <input type="number" class="form-control" name="cr8" placeholder="quantity" required><br>
+
+
+         <input type="file" class="form-control" name="cr9" placeholder="photo" required><br>
+
+    <center><input type="submit" value="ADD" id="btn"></center>
+    </form>
+
+</div></center>
+
+
+
+
+
+
+
+
+</body>
+</html>
